@@ -429,8 +429,8 @@ section { padding: 7rem 0; position: relative; z-index: 2; }
 .bc:hover::after { opacity: 1; }
 
 .b1{grid-column:span 7} .b2{grid-column:span 5}
-.b3{grid-column:span 5} .b4{grid-column:span 4} .b5{grid-column:span 3}
-.b6{grid-column:span 12} .b7{grid-column:span 12}
+.b3{grid-column:span 4} .b4{grid-column:span 4} .b5{grid-column:span 4}
+.b6{grid-column:span 6} .b7{grid-column:span 6}
 
 .bc-n { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--g3); letter-spacing: 0.15em; margin-bottom: 1.25rem; }
 .bc-ico {
@@ -737,12 +737,6 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
                 <ul class="vs-good"><li>OTs digitales al instante</li><li>Historial centralizado</li><li>Asignación y seguimiento</li><li>Todo en una plataforma</li><li>Reportes automáticos</li></ul>
               </div>
             </div>
-            <div class="vs-sep">
-              <div class="vs-row-lbl"><span>Eficiencia operativa</span><span id="eL">0%</span></div>
-              <div class="vs-track"><div class="vs-fill r" id="eB"></div></div>
-              <div class="vs-row-lbl"><span>Control de costos</span><span id="cL">0%</span></div>
-              <div class="vs-track"><div class="vs-fill g" id="cB"></div></div>
-            </div>
           </div>
         </div>
       </div>
@@ -779,7 +773,7 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
       <div class="bc b3 rv d1">
         <div class="bc-n">03</div>
         <div class="bc-ico">📅</div>
-        <h3 class="bc-title">Preventivo</h3>
+        <h3 class="bc-title">Mantenimiento Preventivo</h3>
         <p class="bc-desc">Programación de rutinas por tiempo, horas de uso o kilómetros. El sistema genera las órdenes automáticamente y notifica antes del vencimiento.</p>
       </div>
       <div class="bc b4 rv d2">
@@ -794,58 +788,17 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
         <h3 class="bc-title">Usuarios y Roles</h3>
         <p class="bc-desc">Accesos diferenciados por perfil. Gerencia con visibilidad total, supervisores por área y técnicos con vista de sus tareas. Sin administración de IT.</p>
       </div>
-      <div class="bc b6 rv" style="display:flex;align-items:flex-start;gap:2.5rem;flex-wrap:wrap;">
-        <div style="flex:1;min-width:240px">
-          <div class="bc-n">06</div>
-          <div class="bc-ico">📊</div>
-          <h3 class="bc-title">Reportes y KPIs</h3>
-          <p class="bc-desc">MTTR, MTBF, disponibilidad por activo y costo por equipo. Informes exportables que permiten decisiones basadas en datos reales de la operación.</p>
-        </div>
-        <div style="flex:1;min-width:260px;align-self:flex-end">
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-top:0.5rem;">
-            <div style="background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:0.875rem;text-align:center;">
-              <span style="font-size:1.3rem;font-weight:800;color:var(--white);display:block;letter-spacing:-0.03em">94%</span>
-              <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3);text-transform:uppercase;letter-spacing:0.08em">Disponib.</span>
-            </div>
-            <div style="background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:0.875rem;text-align:center;">
-              <span style="font-size:1.3rem;font-weight:800;color:var(--red2);display:block;letter-spacing:-0.03em">2.4h</span>
-              <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3);text-transform:uppercase;letter-spacing:0.08em">MTTR</span>
-            </div>
-            <div style="background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:0.875rem;text-align:center;">
-              <span style="font-size:1.3rem;font-weight:800;color:#86efac;display:block;letter-spacing:-0.03em">320h</span>
-              <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3);text-transform:uppercase;letter-spacing:0.08em">MTBF</span>
-            </div>
-            <div style="background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:0.875rem;text-align:center;">
-              <span style="font-size:1.3rem;font-weight:800;color:#fde047;display:block;letter-spacing:-0.03em">↓18%</span>
-              <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3);text-transform:uppercase;letter-spacing:0.08em">Costo</span>
-            </div>
-          </div>
-        </div>
+      <div class="bc b6 rv">
+        <div class="bc-n">06</div>
+        <div class="bc-ico">📊</div>
+        <h3 class="bc-title">Reportes y KPIs</h3>
+        <p class="bc-desc">MTTR, MTBF, disponibilidad por activo y costo por equipo. Informes exportables que permiten decisiones basadas en datos reales de la operación.</p>
       </div>
-      <div class="bc b7 rv" style="display:flex;align-items:flex-start;gap:2.5rem;flex-wrap:wrap;">
-        <div style="flex:1;min-width:240px">
-          <div class="bc-n">07 — INSIGHTS</div>
-          <div class="bc-ico">📈</div>
-          <h3 class="bc-title">Dashboard operativo en tiempo real</h3>
-          <p class="bc-desc">Panel centralizado con estado de todas las órdenes de trabajo, disponibilidad de equipos, carga del equipo técnico y alertas de vencimientos. Accesible desde cualquier dispositivo.</p>
-        </div>
-        <div style="flex:1.4;min-width:280px;align-self:flex-end">
-          <div class="chart-mini" id="cmChart"></div>
-          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">ENE</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">FEB</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">MAR</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">ABR</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">MAY</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">JUN</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">JUL</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">AGO</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">SEP</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">OCT</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">NOV</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--g3)">DIC</span>
-          </div>
-        </div>
+      <div class="bc b7 rv">
+        <div class="bc-n">07</div>
+        <div class="bc-ico">🚛</div>
+        <h3 class="bc-title">Flota de Vehículos y Equipos Industriales</h3>
+        <p class="bc-desc">Control integral de cada unidad de su flota: camiones, maquinaria pesada, equipos industriales y vehículos de servicio. Historial completo por activo — kilometraje, horas de operación, intervenciones realizadas y costo acumulado de mantenimiento. Sepa exactamente en qué estado está cada equipo, cuándo fue la última intervención y cuándo vence la próxima.</p>
       </div>
     </div>
   </div>
