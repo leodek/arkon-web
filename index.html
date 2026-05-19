@@ -294,13 +294,29 @@ section { padding: 7rem 0; position: relative; z-index: 2; }
 }
 
 /* Reveal */
-.rv { opacity: 0; transform: translateY(24px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+.rv { opacity: 0; transform: translateY(20px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
 .rv.up { opacity: 1; transform: translateY(0); }
+/* fallback: si JS no carga, mostrar todo igual */
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; } }
 .d1{transition-delay:0.07s}.d2{transition-delay:0.14s}.d3{transition-delay:0.21s}.d4{transition-delay:0.28s}.d5{transition-delay:0.35s}.d6{transition-delay:0.42s}
+
+/* ══════════════════ LAYOUT DOS COLUMNAS (bulletproof) ══════════════════ */
+.two-col { width: 100%; display: table; border-collapse: collapse; }
+.two-col-l { display: table-cell; width: 46%; vertical-align: top; padding-right: 3.5rem; }
+.two-col-r { display: table-cell; width: 54%; vertical-align: top; padding-left: 0.5rem; }
+.two-col-eq { display: table; width: 100%; border-collapse: collapse; }
+.two-col-eq > div:first-child { display: table-cell; width: 46%; vertical-align: middle; padding-right: 3.5rem; }
+.two-col-eq > div:last-child  { display: table-cell; width: 54%; vertical-align: middle; }
+
+@media (max-width: 860px) {
+  .two-col, .two-col-eq { display: block; }
+  .two-col-l, .two-col-r { display: block; width: 100%; padding: 0; margin-bottom: 3rem; }
+  .two-col-eq > div:first-child,
+  .two-col-eq > div:last-child { display: block; width: 100%; padding: 0; margin-bottom: 3rem; }
+}
 
 /* ══════════════════ PROBLEMA ══════════════════ */
 #problema { border-top: 1px solid var(--line); }
-.pb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
 
 .pain-list { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.85rem; }
 .pain-item {
@@ -330,7 +346,6 @@ section { padding: 7rem 0; position: relative; z-index: 2; }
 .vs-card {
   border: 1px solid var(--line2); border-radius: 18px;
   overflow: hidden; background: var(--bg2);
-  position: sticky; top: 88px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 .vs-head {
@@ -385,6 +400,7 @@ section { padding: 7rem 0; position: relative; z-index: 2; }
 .feat-head .sp { max-width: 500px; margin-left: auto; margin-right: auto; }
 
 .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+.bento > * { min-width: 0; }
 .bc {
   background: var(--bg3);
   border: 1px solid var(--line);
@@ -450,7 +466,6 @@ section { padding: 7rem 0; position: relative; z-index: 2; }
 
 /* ══════════════════ PYMES ══════════════════ */
 #pymes { border-top: 1px solid var(--line); }
-.py-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .py-cards { display: flex; flex-direction: column; gap: 0.85rem; }
 .py-c {
   display: flex; gap: 1.1rem; padding: 1.35rem;
@@ -528,7 +543,7 @@ section { padding: 7rem 0; position: relative; z-index: 2; }
 .gal-ph code { font-family: 'DM Mono', monospace; font-size: 0.75rem; background: var(--bg3); border: 1px solid var(--line); padding: 0.22rem 0.55rem; border-radius: 5px; color: var(--red); }
 .gal-ph h3 { font-size: 0.95rem; font-weight: 600; color: var(--g2); margin-bottom: 0.4rem; }
 .gal-loading { grid-column: 1/-1; display: flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 3rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--g3); }
-.sp { width: 14px; height: 14px; border: 1.5px solid var(--line2); border-top-color: var(--red); border-radius: 50%; animation: spin 0.7s linear infinite; }
+.spin { width: 14px; height: 14px; border: 1.5px solid var(--line2); border-top-color: var(--red); border-radius: 50%; animation: spin 0.7s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ══════════════════ LIGHTBOX ══════════════════ */
@@ -544,7 +559,6 @@ section { padding: 7rem 0; position: relative; z-index: 2; }
 
 /* ══════════════════ CONTACTO ══════════════════ */
 #contacto { border-top: 1px solid var(--line); }
-.ct-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem; align-items: start; }
 .ct-meta { margin-top: 2rem; display: flex; flex-direction: column; }
 .ct-row { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
 .ct-row:first-child { border-top: 1px solid var(--line); }
@@ -614,7 +628,6 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
 
 /* RESPONSIVE */
 @media (max-width: 960px) {
-  .pb-grid, .py-grid, .ct-grid { grid-template-columns: 1fr; gap: 3rem; }
   .bento { grid-template-columns: 1fr 1fr; }
   .b1,.b2,.b6,.b7 { grid-column: span 2; }
   .b3,.b4,.b5 { grid-column: span 1; }
@@ -624,7 +637,6 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
   .hamburger { display: flex; }
   .fg2 { grid-template-columns: 1fr; }
   .ft { flex-direction: column; align-items: flex-start; }
-  .vs-card { position: static; }
 }
 @media (max-width: 580px) {
   .bento { grid-template-columns: 1fr; }
@@ -644,7 +656,7 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo"><img src="assets/arkon_logo.png" alt="ARKON"></a>
+    <a href="#hero" class="nav-logo"><img src="arkon_logo.png" alt="ARKON"></a>
     <ul class="nav-links">
       <li><a href="#problema">El problema</a></li>
       <li><a href="#features">Funciones</a></li>
@@ -698,8 +710,8 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
 <!-- PROBLEMA -->
 <section id="problema">
   <div class="wrap">
-    <div class="pb-grid">
-      <div>
+    <div class="two-col">
+      <div class="two-col-l">
         <span class="label rv">El problema</span>
         <h2 class="sh rv d1">El costo oculto de operar <em>sin un sistema</em></h2>
         <p class="sp rv d2">La mayoría de las empresas industriales de pequeño y mediano porte administran el mantenimiento con registros manuales y herramientas no especializadas. Esta modalidad genera ineficiencias concretas y medibles.</p>
@@ -710,7 +722,7 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
           <div class="pain-item rv d5"><div class="pi-ico">🔥</div><div class="pi-txt"><strong>Mantenimiento exclusivamente reactivo</strong>La ausencia de un plan preventivo sistemático convierte cada falla en una emergencia que interrumpe la producción y eleva los costos operativos.</div></div>
         </div>
       </div>
-      <div class="rv d2">
+      <div class="two-col-r rv d2">
         <div class="vs-card">
           <div class="vs-head">
             <span class="vs-tab on">Sin sistema</span>
@@ -718,10 +730,10 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
           </div>
           <div class="vs-body">
             <div class="vs-cols">
-              <div><div class="vs-col-lbl">Situación actual</div>
+              <div class="vs-col"><div class="vs-col-lbl">Situación actual</div>
                 <ul class="vs-bad"><li>Cuadernos de OTs</li><li>Planillas desactualizadas</li><li>Mensajería informal</li><li>Sin historial por activo</li><li>Datos dispersos</li></ul>
               </div>
-              <div><div class="vs-col-lbl">Con ARKON</div>
+              <div class="vs-col"><div class="vs-col-lbl">Con ARKON</div>
                 <ul class="vs-good"><li>OTs digitales al instante</li><li>Historial centralizado</li><li>Asignación y seguimiento</li><li>Todo en una plataforma</li><li>Reportes automáticos</li></ul>
               </div>
             </div>
@@ -866,7 +878,7 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
 <!-- PYMES -->
 <section id="pymes">
   <div class="wrap">
-    <div class="py-grid">
+    <div class="two-col-eq">
       <div>
         <span class="label rv">Para quién es ARKON</span>
         <h2 class="sh rv d1">Pensado para empresas<br><em>que quieren crecer</em></h2>
@@ -894,7 +906,7 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
       <p class="sp rv d2">Las imágenes a continuación corresponden al sistema ARKON en funcionamiento. Lo que se muestra es exactamente lo que su empresa utilizará desde el primer día de implementación.</p>
     </div>
     <div class="gal-grid rv" id="galContainer">
-      <div class="gal-loading"><div class="sp"></div><span>Cargando capturas...</span></div>
+      <div class="gal-loading"><div class="spin"></div><span>Cargando capturas...</span></div>
     </div>
   </div>
   <div class="lb" id="lb">
@@ -909,8 +921,8 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="wrap">
-    <div class="ct-grid">
-      <div>
+    <div class="two-col">
+      <div class="two-col-l">
         <span class="label rv">Contacto</span>
         <h2 class="sh rv d1">Coordinemos una<br><em>demostración</em></h2>
         <p class="sp rv d2">Agendamos una sesión personalizada sin costo para mostrar el funcionamiento de ARKON aplicado a los procesos específicos de su empresa. Sin compromiso de contratación.</p>
@@ -920,7 +932,7 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
           <div class="ct-row"><div class="ct-ico">📍</div><div class="ct-info"><small>Ubicación</small><span>Montevideo, Uruguay</span></div></div>
         </div>
       </div>
-      <div class="rv d2">
+      <div class="two-col-r rv d2">
         <div class="ct-form">
           <form id="cForm" onsubmit="sendF(event)">
             <div class="fg2">
@@ -944,7 +956,7 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
 
 <footer>
   <div class="ft">
-    <div class="ft-logo"><img src="assets/arkon_logo.png" alt="ARKON"></div>
+    <div class="ft-logo"><img src="arkon_logo.png" alt="ARKON"></div>
     <span class="ft-copy">© 2025 ARKON — Software de Mantenimiento Industrial</span>
     <nav class="ft-nav"><a href="#features">Funciones</a><a href="#capturas">Capturas</a><a href="#contacto">Contacto</a></nav>
   </div>
@@ -952,11 +964,19 @@ footer { border-top: 1px solid var(--line); padding: 1.75rem 0; position: relati
 
 <script>
 /* ══ CONFIG ══ */
-const GITHUB_USER = 'TU_USUARIO_GITHUB';
+const GITHUB_USER = 'leodek';
 const GITHUB_REPO = 'arkon-web';
 const IMG_PATH    = 'img/capturas';
 
-/* ══ PARTÍCULAS CANVAS ══ */
+/* Forzar visibilidad inmediata de todos los elementos rv */
+document.querySelectorAll('.rv').forEach(el => el.classList.add('up'));
+
+/* ══ REVEAL con animación para nuevas visitas ══ */
+const ro = new IntersectionObserver(entries =>
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('up'); }),
+  { threshold: 0.05, rootMargin: '0px 0px 0px 0px' }
+);
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
 (function() {
   const canvas = document.getElementById('particles');
   const ctx = canvas.getContext('2d');
@@ -1035,13 +1055,6 @@ window.addEventListener('scroll', () =>
 document.getElementById('hbg').onclick = () => document.getElementById('mobNav').classList.add('open');
 document.getElementById('mobX').onclick = cM;
 function cM() { document.getElementById('mobNav').classList.remove('open'); }
-
-/* ══ REVEAL ══ */
-const ro = new IntersectionObserver(entries =>
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('up'); }),
-  { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-);
-document.querySelectorAll('.rv').forEach(el => ro.observe(el));
 
 /* ══ MARQUEE ══ */
 const words = ['Órdenes de Trabajo','Mantenimiento Preventivo','Activos y Equipos','Control de Personal','KPIs en Tiempo Real','Trazabilidad Total','Cero Papel','Hecho para PyMEs','Software Industrial','Implementación Rápida'];
